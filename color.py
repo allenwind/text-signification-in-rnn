@@ -1,5 +1,7 @@
 import numpy as np
 
+# https://github.com/allenwind/text-color-render
+
 # ANSI escape code
 ansi_code_ids =  [15, 224, 217, 210, 203, 9, 160, 124, 88]
 length = len(ansi_code_ids)

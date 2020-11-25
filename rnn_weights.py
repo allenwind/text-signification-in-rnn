@@ -2,7 +2,7 @@ import tensorflow as tf
 
 
 class RNNWeight1(tf.keras.layers.Layer):
-    """句向量与每个词向量的内积"""
+    """句向量与每个词向量的内积，准确来说是平均绝对误差"""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

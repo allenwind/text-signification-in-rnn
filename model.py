@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
-physical_devices = tf.config.experimental.list_physical_devices("GPU")
-assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
+# physical_devices = tf.config.experimental.list_physical_devices("GPU")
+# assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
+# tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.models import Model
@@ -25,7 +25,7 @@ from dataset import load_hotel_comment
 def gelu(x):
     return 0.5 * x * (1.0 + tf.math.erf(x / tf.sqrt(2.0)))
 
-X, y, classes = load_weibo_senti_100k()
+X, y, classes = load_THUCNews_title_label()
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=7384672)
 
 num_classes = len(classes)
@@ -123,7 +123,7 @@ def visualization():
         for i, model_weight_outputs in enumerate(mws, start=1):
             weights = model_weight_outputs.predict(x)[0]
             weights = weights.flatten()[:sample_len]
-            print("weight {}".format(i), sep="\t", end="")
+            print("weight {} ".format(i), sep="\t", end="")
             print_color_text(sample, weights)
             print(" =>", id_to_classes[y_pred_id])
 
